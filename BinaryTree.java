@@ -1,8 +1,7 @@
 public class BinaryTree {
 
     Node root;
-
-    public Node GetRoot(){
+    public Node Root(){
         return this.root;
     }
 
@@ -25,11 +24,11 @@ public class BinaryTree {
         if (root != null) {
             boolean result = AddNode(root, value);
             root = Rotate(root);
-            root.color = Color.BLACK;
+            root.colour = Colour.BLACK;
             return result;
         } else {
             root = new Node(value);
-            root.color = Color.BLACK;
+            root.colour = Colour.BLACK;
             return true;
         }
     }
@@ -45,7 +44,7 @@ public class BinaryTree {
                     return result;
                 } else {
                     node.left = new Node(value);
-                    node.left.color = Color.RED;
+                    node.left.colour = Colour.RED;
                     node.left.value = value;
                     return true;
                 }
@@ -67,18 +66,18 @@ public class BinaryTree {
         boolean rotate;
         do {
             rotate = false;
-            if (result.right != null && result.right.color == Color.RED &&
-                    (result.left == null || result.left.color == Color.BLACK)) {
+            if (result.right != null && result.right.colour == Colour.RED &&
+                    (result.left == null || result.left.colour == Colour.BLACK)) {
                 rotate = true;
                 result = RightSwap(result);
             }
-            if (result.left != null && result.left.color == Color.RED &&
-                    result.left.left != null && result.left.left.color == Color.RED) {
+            if (result.left != null && result.left.colour == Colour.RED &&
+                    result.left.left != null && result.left.left.colour == Colour.RED) {
                 rotate = true;
                 result = LeftSwap(result);
             }
-            if (result.left != null && result.left.color == Color.RED &&
-                    result.right != null && result.right.color == Color.RED) {
+            if (result.left != null && result.left.colour == Colour.RED &&
+                    result.right != null && result.right.colour == Colour.RED) {
                 rotate = true;
                 ColorSwap(result);
             }
@@ -91,8 +90,8 @@ public class BinaryTree {
         Node middle = right.left;
         right.left = node;
         node.right = middle;
-        right.color = node.color;
-        node.color = Color.RED;
+        right.colour = node.colour;
+        node.colour = Colour.RED;
         return right;
     }
 
@@ -101,14 +100,14 @@ public class BinaryTree {
         Node middle = left.right;
         left.right = node;
         node.left = middle;
-        left.color = node.color;
-        node.color = Color.RED;
+        left.colour = node.colour;
+        node.colour = Colour.RED;
         return left;
     }
 
     public void ColorSwap(Node node) {
-        node.right.color = Color.BLACK;
-        node.left.color = Color.BLACK;
-        node.color = Color.RED;
+        node.right.colour = Colour.BLACK;
+        node.left.colour = Colour.BLACK;
+        node.colour = Colour.RED;
     }
 }

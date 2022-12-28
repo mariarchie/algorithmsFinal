@@ -1,10 +1,10 @@
 public class Node {
     int value;
     Node left, right;
-    Color color;
+    Colour colour;
 
     public Node(int value) {
         this.value = value;
-        this.color = Color.RED;
+        this.colour = Colour.RED;
     }
 }
